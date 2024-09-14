@@ -505,7 +505,7 @@ if page == pages[4] :
 
         #liste des véhicules dans le répertoire de départ [1105, 1115, 38516, 38383, 708, 718, 2210, 38257, 39257] que je recrée à la main
         # DataFrame de données:
-        df_voitures = ['CITROEN C3 Diesel', 'CITROEN C3 Essence', 'RENAULT MEGANE Diesel', 'RENAULT ESPACE Diesel', 'BMW X1 Diesel', 'BMW X1 Essence', 'LAMBORGHINI AVENTADOR', 'PORSCHE 911', 'SMART']
+        df_ex_voitures = ['CITROEN C3 Diesel', 'CITROEN C3 Essence', 'RENAULT MEGANE Diesel', 'RENAULT ESPACE Diesel', 'BMW X1 Diesel', 'BMW X1 Essence', 'LAMBORGHINI AVENTADOR', 'PORSCHE 911', 'SMART']
         df_voitures = pd.DataFrame(df_ex_voitures, columns=['Name'])
         df_voitures['Carb'] = ['Gazole', 'Essence', 'Gazole', 'Gazole', 'Gazole', 'Essence', 'Essence', 'Essence', 'Gazole']
         df_voitures['Conso'] = [4.4, 4.6, 5.6, 7.2, 6.3, 7.7, 17.2, 9.0, 3.3]
