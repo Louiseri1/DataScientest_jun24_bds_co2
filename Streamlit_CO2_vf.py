@@ -50,7 +50,6 @@ if page == pages[1] :
     st.write("On observe assez peu de valeurs manquantes dans le dataset.")
     st.write("Deux variables en particulier présentent un grand nombre de valeurs manquantes (16 : HC (g/km) et 23 : Date de mise à jour). Ces variables seront donc supprimées. La présence d’une quantité non négligeable de valeurs manquantes dans les variables Carrosserie et gamme est provoquée par l’inclusion du jeu de données de 2015 (ces variables y sont absentes).")
     if st.checkbox("Afficher les NA") :
-        #st.dataframe(df.isna().sum())
         st.dataframe(pd.DataFrame(df.isna().sum(), columns =['Nombre de NA']))
 
 ### Visualisation
@@ -433,13 +432,11 @@ if page == pages[4] :
         X_pred_dt = scaler.transform(X_pred_dt)
         # prédiciton avec le décision tree
         y_pred_dt = model_dt.predict(X_pred_dt)
-        #st.write(f"Les émissions de CO2 prédites par le décision tree pour ce modèle de voiture est {y_pred_dt[0]} grammes par kilomètre.") 
         st.write(f"Les émissions de CO2 prédites par le modèle pour ce type de voiture sont de {y_pred_dt[0]:.1f} g/km.")
 
     if option == 'Réseau de neurones':
         st.subheader("Les fonctionnalités de votre voiture")
         # sidebar
-        #st.sidebar.header('Entrez vos paramètres')
         # affichage des paramètres choisis
         df_user = user_input_features()
         st.dataframe(df_user)
@@ -450,14 +447,12 @@ if page == pages[4] :
         X_pred_dl = scaler2.transform(X_pred_dl)
         # prédiciton avec le décision tree
         y_pred_dl = model_dl.predict(X_pred_dl)
-        #st.write(f"Les émissions de CO2 prédites par le réseau de neurones pour ce modèle de voiture est {y_pred_dl[0][0]} grammes par kilomètre.")
         st.write(f"Les émissions de CO2 prédites par le modèle pour ce type de voiture sont de {y_pred_dl[0][0]:.1f} g/km.")
 
 
     if option == 'Modèle custom TensorFlow':
         st.subheader("Les fonctionnalités de votre voiture")
         # sidebar
-        #st.sidebar.header('Entrez vos paramètres')
         # affichage des paramètres choisis
         df_user = user_input_features_tf()
         st.dataframe(df_user)
@@ -469,35 +464,7 @@ if page == pages[4] :
 
         # prédiction avec notre custom modèle
         y_pred_tf = model_tf(X_pred_tf[X_pred_tf.columns[0]], X_pred_tf[X_pred_tf.columns[1]], X_pred_tf[X_pred_tf.columns[2]], X_pred_tf[X_pred_tf.columns[3]], X_pred_tf[X_pred_tf.columns[4]], X_pred_tf[X_pred_tf.columns[5]])
-        #st.write(f"Les émissions de CO2 prédites pour ce modèle de voiture est {y_pred_tf[0]} grammes par kilomètre.") 
         st.write(f"Les émissions de CO2 prédites par le modèle pour ce type de voiture sont de {y_pred_tf[0]:.1f} g/km.")
-
-        # quelques exemples pour des voitures que l'on connaît tous
-        st.subheader("Quelques prédictions pour des voitures que l'on connaît tous")
-
-        # Renault Mégane
-        #result_megane = st.button('Renault Megane')
-        #if result_megane : 
-        #    X_megane = [1.4, 'Essence']
-        #    data_megane = {'Consommation mixte (l/100km)' : X_megane[0], 'Carburant' : X_megane[1]}
-        #    df_megane = pd.DataFrame(data_megane, index = [0])
-        #    df_carb_megane = construction_col_car(df_megane)
-        #    X_pred_megane = df_carb_megane[['Consommation mixte (l/100km)', 'Essence', 'Gaz Naturel Vehicule (GNV)', 'Gaz de Petrole Liquefié (GPL)', 'Gazole', 'SuperEthanol-E85']]
-        #    st.dataframe(data_megane)
-        #    y_megane =  model_tf(X_pred_megane[X_pred_megane.columns[0]], X_pred_megane[X_pred_megane.columns[1]], X_pred_megane[X_pred_megane.columns[2]], X_pred_megane[X_pred_megane.columns[3]], X_pred_megane[X_pred_megane.columns[4]], X_pred_megane[X_pred_megane.columns[5]])
-        #    st.write(f"Les émissions de CO2 prédites pour ce modèle de voiture est {y_megane[0]} grammes par kilomètre.") 
-
-        # Renault Espace
-        #result_espace = st.button('Renault Espace')
-        #if result_espace :
-        #    X_espace = [4.7, 'Essence']
-        #    data_espace = {'Consommation mixte (l/100km)' : X_espace[0], 'Carburant' : X_espace[1]}
-        #    df_espace = pd.DataFrame(data_espace, index = [0])
-        #    df_carb_espace = construction_col_car(df_espace)
-        #    X_pred_espace = df_carb_espace[['Consommation mixte (l/100km)', 'Essence', 'Gaz Naturel Vehicule (GNV)', 'Gaz de Petrole Liquefié (GPL)', 'Gazole', 'SuperEthanol-E85']]
-        #    st.dataframe(data_espace)
-        #    y_espace =  model_tf(X_pred_espace[X_pred_espace.columns[0]], X_pred_espace[X_pred_espace.columns[1]], X_pred_espace[X_pred_espace.columns[2]], X_pred_espace[X_pred_espace.columns[3]], X_pred_espace[X_pred_espace.columns[4]], X_pred_espace[X_pred_espace.columns[5]])
-        #    st.write(f"Les émissions de CO2 prédites pour ce modèle de voiture est {y_espace[0]} grammes par kilomètre.")
 
         # quelques exemples pour des voitures que l'on connaît tous
         st.subheader("Quelques prédictions pour des voitures que l'on connaît tous")
@@ -528,23 +495,9 @@ if page == pages[4] :
                     y_car =  model_tf(X_pred_car[X_pred_car.columns[0]], X_pred_car[X_pred_car.columns[1]], X_pred_car[X_pred_car.columns[2]], X_pred_car[X_pred_car.columns[3]], X_pred_car[X_pred_car.columns[4]], X_pred_car[X_pred_car.columns[5]])
                     st.write(f"Les émissions de CO2 prédites pour ce modèle de voiture sont de {y_car[0]:.1f} grammes par kilomètre.")
 
-#if page == pages[5] : 
-#   st.header("Quelques prédictions pour des voitures que l'on connaît tous")
-#   choix = ['Renault Megane', 'Renault Espace']
-#   option = st.selectbox('Choix du modèle de voiture', choix)
-#   st.write('La voiture choisie est :', option)
-
-#   if option == 'Renault Megane':
-        # ajout des valeurs de conso mixte et de type de carburant
-#      X_megane = [1.4, 1, 0, 0, 0, 0]
-#      y_megane =  model_tf(X_megane[0], X_megane[1], X_megane[2], X_megane[3], X_megane[4], X_megane[5])
-#      st.write(f"Les émissions de CO2 prédites pour ce modèle de voiture est {y_megane[0]} grammes par kilomètre.") 
-
-#   if option == 'Renault Espace':
-      # ajout des valeurs de conso mixte et de type de carburant
-#      X_espace = [4.7, 1, 0, 0, 0, 0]
-#      y_espace =  model_tf(X_espace[0], X_espace[1], X_espace[2], X_espace[3], X_espace[4], X_espace[5])
-#      st.write(f"Les émissions de CO2 prédites pour ce modèle de voiture est {y_espace[0]} grammes par kilomètre.") 
+##############
+# Conclusion #
+##############
 
 if page == pages[5] :
     st.header("Conclusions et perspéctives")
