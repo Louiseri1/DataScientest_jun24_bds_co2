@@ -486,7 +486,7 @@ if page == pages[4] :
             #initialisation des colonnes et remplissage des colonnes avec code associé
             for j, col in zip(range(3), st.columns(3)):
                 text = df_voitures['Name'][3*i+j]
-                if col.button(text):
+                if col.button(text, use_container_width=True):
                     data_voiture = {'Consommation mixte (l/100km)' : df_voitures['Conso'][3*i+j], 'Carburant' : df_voitures['Carb'][3*i+j]}
                     df_car = pd.DataFrame(data_voiture, index = [0])
                     df_carb_car = construction_col_car(df_car)
