@@ -468,7 +468,7 @@ if page == pages[4] :
 
         # quelques exemples pour des voitures que l'on connaît tous
         st.subheader("Quelques prédictions pour des voitures que l'on connaît tous")
-        st.write(f"Les véhicules sont d'entrée de gamme dans leur catégorie respectives.")
+        st.write(f"Les véhicules sont d'entrée de gamme dans leurs catégories respectives.")
 
         #liste des véhicules dans le répertoire de départ [1105, 1115, 38516, 38383, 708, 718, 2210, 38257, 39257] que je recrée à la main
         # DataFrame de données:
