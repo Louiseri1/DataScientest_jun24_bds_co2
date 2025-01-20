@@ -12,6 +12,7 @@ Ce projet a été développé par l'équipe suivante :
 - Thierry GONCALVES-NOVO 
 - Tanguy LALOUELLE
 - Louise RIGAL
+  
 Sous le mentorat de Raphaël et Gaspard de DataScientest.
 
 Le rapport complet de notre projet est disponible dans le dossier (report).
